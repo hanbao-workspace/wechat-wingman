@@ -2,13 +2,20 @@ package main
 
 import (
 	"fmt"
-	_ "github.com/skip2/go-qrcode"
+	"log"
 	"wechat-wingman/wechat"
-	//"wechat-wingman/wechat"
 )
 
 func main() {
-	//wechat.GetQRC("http://www.baidu.com")
-	a := wechat.GetQRC()
-	fmt.Println(a)
+	//defer func() {
+	//	for {
+	//	}
+	//}()
+	wechat := wechat.New()
+	if err := wechat.Login(); err != nil {
+		log.Panicln(err)
+	}
+	fmt.Println("登录成功")
+	wechat.Init()
+
 }
